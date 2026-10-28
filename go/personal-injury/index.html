@@ -146,6 +146,9 @@ p.eyebrow::after{content:"";display:block;height:4px;margin-top:14px;background:
 .logo{margin-right:auto;display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo-m{height:40px;width:auto}
 .logo-w{height:15px;width:auto}
+/* The client's own logo, 2026-10-28 (build.js, CLIENT_LOGO): one picture, the circle with CLAIM 3000 in it. */
+.logo-c{height:52px;width:auto}
+.past .logo-c{height:46px}
 .top :focus-visible,.sheet :focus-visible{outline-color:#fff}
 .nm{position:relative}
 .nm-list{display:flex;align-items:center;gap:4px}
@@ -226,6 +229,20 @@ p.eyebrow::after{content:"";display:block;height:4px;margin-top:14px;background:
    in Safari, hence the haze.) verify() holds it. */
 .hero-h,.hero-para,.hero-points,.hero .btn-line-w{text-shadow:0 1px 2px rgba(0,0,0,.6),0 0 12px rgba(0,0,0,.5)}
 .hero-copy{position:relative;z-index:1;padding:calc(var(--bar) + 24px) var(--gutter) 40px;max-width:calc(var(--gutter) + 720px)}
+/* THE WORDS ARE SHADED, LETTER BY LETTER (Fahad, 2026-10-28: "the text is shaded so its easier to read", then of an
+   oval shade behind the block, "its overlapping with the video as well and not just the text, fix its percision").
+   A close dark shadow round every letter, stacked tight to wide, so the shade follows the words and stops where they
+   stop; the film between and around them is untouched. Then "it need to be more subtle than that": three light layers. Replaces the light glow below. The red button keeps clean letters. */
+.hero:not(.ch-photo) .hero-h,.hero:not(.ch-photo) .hero-para,.hero:not(.ch-photo) .hero-points{text-shadow:0 0 2px rgba(64,64,64,.5),0 0 6px rgba(64,64,64,.4),0 0 14px rgba(64,64,64,.25)}
+/* THE HERO WORDS ARE BOLDER (Fahad, 2026-10-28, still finding the subtle shade hard to read: "what if we made the
+   letter bolds?"): the paragraph and the trust line at 600, the trust line in full white. Thicker strokes carry the
+   words over the newsprint so the shade can stay subtle. The heading is the serif and keeps its 500. */
+.hero .hero-para{font-weight:600}
+.hero .hero-points{font-weight:600;color:#fff}
+/* A VERY FAINT SHADE BEHIND THE WORDS AS WELL (Fahad, 2026-10-28: "add very subtle shading behind it as well even
+   more subtle than before"). Held close to the words (24px past them, against the 64 to 120 of the oval he said spilled
+   onto the film) and very faint (halved at "too much", halved again at "still too much"; then GREY, not black: "make it grey shading"), fading to nothing before its edge. */
+.hero:not(.ch-photo) .hero-copy::before{content:"";position:absolute;z-index:-1;inset:-24px -40px -24px -32px;background:radial-gradient(closest-side,rgba(64,64,64,.3),rgba(64,64,64,.2) 60%,rgba(64,64,64,0));pointer-events:none}
 .kicker{font-weight:600;font-size:13px;line-height:1.3;letter-spacing:.16em;text-transform:uppercase}
 .hero-h{margin-top:24px;font-weight:700;font-size:clamp(40px,5vw,72px);line-height:1.04;letter-spacing:-.03em}
 .hero-l1{display:block}
@@ -770,11 +787,13 @@ html:not(.js) .check-back{display:none}
   .logo{gap:8px}
   .logo-m{height:34px}
   .logo-w{height:11.5px}
+  .logo-c,.past .logo-c{height:44px}
   .top .btn-bar,.menu-btn{padding:0 10px;font-size:15px}
   .logo-s{height:76px}
 
   .hero{min-height:640px}
   .hero-copy{padding:calc(var(--bar) + 16px) 16px 72px}
+  .hero:not(.ch-photo) .hero-copy::before{inset:-20px -16px;background:linear-gradient(180deg,rgba(64,64,64,0),rgba(64,64,64,.24) 24px,rgba(64,64,64,.24) calc(100% - 24px),rgba(64,64,64,0))}
   .hero-h{margin-top:16px;font-size:36px;line-height:38px}
   .hero-para{margin-top:12px;font-size:17px;line-height:26px}
   .hero-act{flex-direction:column;gap:10px;margin-top:22px}
@@ -1643,7 +1662,7 @@ html.uni .closing-u .cx-trust i{color:transparent}
 
 <a class="skip" href="#main">Skip to content</a>
 <header class="top top-ad" id="top">
-  <span class="logo"><img class="logo-m" src="/claim3000-five-preview/logo/mark-white.svg" alt="" width="48" height="40"><img class="logo-w" src="/claim3000-five-preview/logo/word-white.svg" alt="" width="130" height="15"></span>
+  <span class="logo"><img class="logo-c" src="/claim3000-five-preview/logo/claim-3000.png" alt="" width="49" height="52"></span>
   <a class="btn btn-bar cta" href="#hf">Start your claim</a>
 </header>
 <main id="main"><script>document.documentElement.classList.add("uni")</script>
@@ -1788,7 +1807,7 @@ html.uni .closing-u .cx-trust i{color:transparent}
 <footer class="foot">
   <div class="foot-in">
     <div class="foot-top">
-      <span class="wordmark"><img class="logo-s" src="/claim3000-five-preview/logo/stacked-white.svg" alt="" width="182" height="180"></span>
+      <span class="wordmark"><img class="logo-s" src="/claim3000-five-preview/logo/claim-3000.png" alt="" width="83" height="88"></span>
       
       
     </div>

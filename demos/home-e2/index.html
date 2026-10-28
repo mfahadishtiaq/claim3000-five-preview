@@ -146,6 +146,9 @@ p.eyebrow::after{content:"";display:block;height:4px;margin-top:14px;background:
 .logo{margin-right:auto;display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo-m{height:40px;width:auto}
 .logo-w{height:15px;width:auto}
+/* The client's own logo, 2026-10-28 (build.js, CLIENT_LOGO): one picture, the circle with CLAIM 3000 in it. */
+.logo-c{height:52px;width:auto}
+.past .logo-c{height:46px}
 .top :focus-visible,.sheet :focus-visible{outline-color:#fff}
 .nm{position:relative}
 .nm-list{display:flex;align-items:center;gap:4px}
@@ -226,6 +229,20 @@ p.eyebrow::after{content:"";display:block;height:4px;margin-top:14px;background:
    in Safari, hence the haze.) verify() holds it. */
 .hero-h,.hero-para,.hero-points,.hero .btn-line-w{text-shadow:0 1px 2px rgba(0,0,0,.6),0 0 12px rgba(0,0,0,.5)}
 .hero-copy{position:relative;z-index:1;padding:calc(var(--bar) + 24px) var(--gutter) 40px;max-width:calc(var(--gutter) + 720px)}
+/* THE WORDS ARE SHADED, LETTER BY LETTER (Fahad, 2026-10-28: "the text is shaded so its easier to read", then of an
+   oval shade behind the block, "its overlapping with the video as well and not just the text, fix its percision").
+   A close dark shadow round every letter, stacked tight to wide, so the shade follows the words and stops where they
+   stop; the film between and around them is untouched. Then "it need to be more subtle than that": three light layers. Replaces the light glow below. The red button keeps clean letters. */
+.hero:not(.ch-photo) .hero-h,.hero:not(.ch-photo) .hero-para,.hero:not(.ch-photo) .hero-points{text-shadow:0 0 2px rgba(64,64,64,.5),0 0 6px rgba(64,64,64,.4),0 0 14px rgba(64,64,64,.25)}
+/* THE HERO WORDS ARE BOLDER (Fahad, 2026-10-28, still finding the subtle shade hard to read: "what if we made the
+   letter bolds?"): the paragraph and the trust line at 600, the trust line in full white. Thicker strokes carry the
+   words over the newsprint so the shade can stay subtle. The heading is the serif and keeps its 500. */
+.hero .hero-para{font-weight:600}
+.hero .hero-points{font-weight:600;color:#fff}
+/* A VERY FAINT SHADE BEHIND THE WORDS AS WELL (Fahad, 2026-10-28: "add very subtle shading behind it as well even
+   more subtle than before"). Held close to the words (24px past them, against the 64 to 120 of the oval he said spilled
+   onto the film) and very faint (halved at "too much", halved again at "still too much"; then GREY, not black: "make it grey shading"), fading to nothing before its edge. */
+.hero:not(.ch-photo) .hero-copy::before{content:"";position:absolute;z-index:-1;inset:-24px -40px -24px -32px;background:radial-gradient(closest-side,rgba(64,64,64,.3),rgba(64,64,64,.2) 60%,rgba(64,64,64,0));pointer-events:none}
 .kicker{font-weight:600;font-size:13px;line-height:1.3;letter-spacing:.16em;text-transform:uppercase}
 .hero-h{margin-top:24px;font-weight:700;font-size:clamp(40px,5vw,72px);line-height:1.04;letter-spacing:-.03em}
 .hero-l1{display:block}
@@ -770,11 +787,13 @@ html:not(.js) .check-back{display:none}
   .logo{gap:8px}
   .logo-m{height:34px}
   .logo-w{height:11.5px}
+  .logo-c,.past .logo-c{height:44px}
   .top .btn-bar,.menu-btn{padding:0 10px;font-size:15px}
   .logo-s{height:76px}
 
   .hero{min-height:640px}
   .hero-copy{padding:calc(var(--bar) + 16px) 16px 72px}
+  .hero:not(.ch-photo) .hero-copy::before{inset:-20px -16px;background:linear-gradient(180deg,rgba(64,64,64,0),rgba(64,64,64,.24) 24px,rgba(64,64,64,.24) calc(100% - 24px),rgba(64,64,64,0))}
   .hero-h{margin-top:16px;font-size:36px;line-height:38px}
   .hero-para{margin-top:12px;font-size:17px;line-height:26px}
   .hero-act{flex-direction:column;gap:10px;margin-top:22px}
@@ -1643,7 +1662,7 @@ html.uni .closing-u .cx-trust i{color:transparent}
 
 <a class="skip" href="#main">Skip to content</a>
 <header class="top" id="top">
-  <a class="logo" href="/claim3000-five-preview/" aria-label="Claim 3000, home"><img class="logo-m" src="/claim3000-five-preview/logo/mark-white.svg" alt="" width="48" height="40"><img class="logo-w" src="/claim3000-five-preview/logo/word-white.svg" alt="" width="130" height="15"></a>
+  <a class="logo" href="/claim3000-five-preview/" aria-label="Claim 3000, home"><img class="logo-c" src="/claim3000-five-preview/logo/claim-3000.png" alt="" width="49" height="52"></a>
   <nav class="nm" aria-label="Main">
     <ul class="nm-list">
       <li><a class="nm-trig" href="#claims" aria-controls="nm-claims">Claims<svg viewBox="0 0 10 6" width="10" height="6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m1 1 4 4 4-4"/></svg></a></li>
@@ -1652,7 +1671,7 @@ html.uni .closing-u .cx-trust i{color:transparent}
       <li><a class="nm-link" href="/claim3000-five-preview/guides/">Articles</a></li>
       <li><a class="nm-link" href="#start">Contact us</a></li>
     </ul>
-    <div class="nm-pos"><div class="nm-viewport"><div class="nm-content" id="nm-claims"><ul class="nm-grid"><li><a class="nm-item" href="/claim3000-five-preview/claims/personal-injury/"><span class="nm-t">Personal injury</span><span class="nm-d">Injuries following road traffic accidents, accidents at work or in public places.</span></a></li><li><a class="nm-item" href="#claim-medical-negligence"><span class="nm-t">Medical negligence</span><span class="nm-d">Harm caused by medical care that may have fallen below acceptable standards.</span></a></li><li><a class="nm-item" href="#claim-sports-injury"><span class="nm-t">Sports injury</span><span class="nm-d">Injuries during sport where someone else's actions may have been responsible.</span></a></li><li><a class="nm-item" href="#claim-slips-trips-falls"><span class="nm-t">Slips, trips and falls</span><span class="nm-d">Injuries from slipping, tripping or falling where someone else may be responsible.</span></a></li><li><a class="nm-item" href="https://www.thepcpclaimscompany.co.uk/" target="_blank" rel="noopener"><span class="nm-t">Mis-sold car finance</span><span class="nm-d">PCP and other car finance agreements that may have been mis-sold.</span></a></li><li><a class="nm-item" href="http://localhost:8841/" target="_blank" rel="noopener"><span class="nm-t">Housing disrepair</span><span class="nm-d">Damp, mould and other repair problems your landlord has left unresolved.</span></a></li></ul></div></div></div>
+    <div class="nm-pos"><div class="nm-viewport"><div class="nm-content" id="nm-claims"><ul class="nm-grid"><li><a class="nm-item" href="/claim3000-five-preview/claims/personal-injury/"><span class="nm-t">Personal injury</span><span class="nm-d">Injuries following road traffic accidents, accidents at work or in public places.</span></a></li><li><a class="nm-item" href="#claim-medical-negligence"><span class="nm-t">Medical negligence</span><span class="nm-d">Harm caused by medical care that may have fallen below acceptable standards.</span></a></li><li><a class="nm-item" href="#claim-sports-injury"><span class="nm-t">Sports injury</span><span class="nm-d">Injuries during sport where someone else's actions may have been responsible.</span></a></li><li><a class="nm-item" href="#claim-slips-trips-falls"><span class="nm-t">Slips, trips and falls</span><span class="nm-d">Injuries from slipping, tripping or falling where someone else may be responsible.</span></a></li><li><a class="nm-item" href="https://www.thepcpclaimscompany.co.uk/" target="_blank" rel="noopener"><span class="nm-t">Mis-sold car finance</span><span class="nm-d">PCP and other car finance agreements that may have been mis-sold.</span></a></li><li><a class="nm-item" href="https://mfahadishtiaq.github.io/housing-helpline-preview/" target="_blank" rel="noopener"><span class="nm-t">Housing disrepair</span><span class="nm-d">Damp, mould and other repair problems your landlord has left unresolved.</span></a></li></ul></div></div></div>
   </nav>
   <a class="btn btn-bar cta" href="/claim3000-five-preview/start-your-claim/">Start your claim</a>
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="sheet">Menu</button>
@@ -1665,7 +1684,7 @@ html.uni .closing-u .cx-trust i{color:transparent}
   <a class="sheet-claim" href="#claim-sports-injury">Sports injury</a>
   <a class="sheet-claim" href="#claim-slips-trips-falls">Slips, trips and falls</a>
   <a class="sheet-claim" href="https://www.thepcpclaimscompany.co.uk/" target="_blank" rel="noopener">Mis-sold car finance</a>
-  <a class="sheet-claim" href="http://localhost:8841/" target="_blank" rel="noopener">Housing disrepair</a>
+  <a class="sheet-claim" href="https://mfahadishtiaq.github.io/housing-helpline-preview/" target="_blank" rel="noopener">Housing disrepair</a>
   <p class="sheet-h">Claim 3000</p>
   <a href="/claim3000-five-preview/solicitors/">For solicitors</a>
   <a href="/claim3000-five-preview/about-us/">About us</a>
@@ -1798,7 +1817,7 @@ html.uni .closing-u .cx-trust i{color:transparent}
 <footer class="foot">
   <div class="foot-in">
     <div class="foot-top">
-      <a class="wordmark" href="/claim3000-five-preview/" aria-label="Claim 3000, home"><img class="logo-s" src="/claim3000-five-preview/logo/stacked-white.svg" alt="" width="182" height="180"></a>
+      <a class="wordmark" href="/claim3000-five-preview/" aria-label="Claim 3000, home"><img class="logo-s" src="/claim3000-five-preview/logo/claim-3000.png" alt="" width="83" height="88"></a>
       <ul class="foot-nav"><li><a href="#claims">Claims</a></li><li><a href="#how">How it works</a></li><li><a href="/claim3000-five-preview/guides/">Guidance</a></li><li><a href="/claim3000-five-preview/about-us/">About us</a></li></ul>
       <ul class="foot-social"><li><a href="#" aria-label="Claim 3000 on X (Twitter)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a></li><li><a href="#" aria-label="Claim 3000 on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.948 1.637-1.948 3.37-1.948 3.601 0 4.267 2.37 4.267 5.455v6.284zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></li><li><a href="#" aria-label="Claim 3000 on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a></li></ul>
     </div>
