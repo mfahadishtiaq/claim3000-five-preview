@@ -15,10 +15,8 @@
 <meta property="og:url" content="https://claim3000.co.uk/demos/home-e/">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20rx%3D%2220%22%20fill%3D%22%23D90000%22%2F%3E%3C%2Fsvg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap">
-<style>/* CLAIM 3000, SITE FIVE: the look.
+<link rel="preload" href="/claim3000-five-preview/fonts/plus-jakarta-sans.woff2" as="font" type="font/woff2" crossorigin>
+<style>@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:200 800;font-display:swap;src:url(/claim3000-five-preview/fonts/plus-jakarta-sans.woff2) format('woff2')}@font-face{font-family:'Plus Jakarta Sans';font-style:italic;font-weight:200 800;font-display:swap;src:url(/claim3000-five-preview/fonts/plus-jakarta-sans-italic.woff2) format('woff2')}/* CLAIM 3000, SITE FIVE: the look.
  *
  * THE REFERENCE IS FLETCHERS SOLICITORS (Fahad, 2026-10-13: "copy this site
  * for the rest of it"), measured from https://www.fletcherssolicitors.co.uk/
@@ -148,7 +146,8 @@ p.eyebrow::after{content:"";display:block;height:4px;margin-top:14px;background:
 .logo-w{height:15px;width:auto}
 /* The client's own logo, 2026-10-28 (build.js, CLIENT_LOGO): one picture, the circle with CLAIM 3000 in it. */
 .logo-c{height:52px;width:auto}
-.past .logo-c{height:46px}
+/* THE LOGO KEEPS ONE SIZE (Fahad, 2026-11-03: "the claims 3000 logo is bigger at first and then becomes smaller as the
+   nav bar appears, I dont want it to become smaller"): no smaller size once the bar fills in; the bar may still slim. */
 .top :focus-visible,.sheet :focus-visible{outline-color:#fff}
 .nm{position:relative}
 .nm-list{display:flex;align-items:center;gap:4px}
@@ -233,16 +232,25 @@ p.eyebrow::after{content:"";display:block;height:4px;margin-top:14px;background:
    oval shade behind the block, "its overlapping with the video as well and not just the text, fix its percision").
    A close dark shadow round every letter, stacked tight to wide, so the shade follows the words and stops where they
    stop; the film between and around them is untouched. Then "it need to be more subtle than that": three light layers. Replaces the light glow below. The red button keeps clean letters. */
-.hero:not(.ch-photo) .hero-h,.hero:not(.ch-photo) .hero-para,.hero:not(.ch-photo) .hero-points{text-shadow:0 0 2px rgba(64,64,64,.5),0 0 6px rgba(64,64,64,.4),0 0 14px rgba(64,64,64,.25)}
+.hero:not(.ch-photo) .hero-h,.hero:not(.ch-photo) .hero-para,.hero:not(.ch-photo) .hero-points{text-shadow:0 0 2px rgba(34,34,34,.7),0 0 6px rgba(34,34,34,.55),0 0 14px rgba(34,34,34,.38)}
 /* THE HERO WORDS ARE BOLDER (Fahad, 2026-10-28, still finding the subtle shade hard to read: "what if we made the
    letter bolds?"): the paragraph and the trust line at 600, the trust line in full white. Thicker strokes carry the
    words over the newsprint so the shade can stay subtle. The heading is the serif and keeps its 500. */
 .hero .hero-para{font-weight:600}
 .hero .hero-points{font-weight:600;color:#fff}
+/* A FROSTED PANEL BEHIND THE HOME HERO PARAGRAPH (Fahad, 2026-11-03, his pick H on boards/hero-band/: "Lest go with
+   H"). One soft rectangle behind the whole paragraph, grey .28, the film blurred 6px under it, 6px corners. It steps
+   left by its side padding so the words still line up under the heading. Replaces the slate band per line (A), which
+   he saw first and asked for alternatives to. Home hero paragraph only. */
+.hero-hl{margin-left:-16px;padding:14px 16px;border-radius:6px;background:rgba(40,40,40,.28);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+/* READABILITY, ROUND TWO (Fahad, 2026-11-03, of the hero over the pale newspaper frame, after the headings went sans:
+   "now we need to improve readability here"): the heading 500 to 600 (the thin sans strokes vanished into the
+   newsprint), the letter shade a darker grey (34 not 64) and stronger, the patch behind the words .46/.32 (was .3/.2)
+   and .38 on phones. Still grey, still held to the words, the film itself unshaded. */
 /* A VERY FAINT SHADE BEHIND THE WORDS AS WELL (Fahad, 2026-10-28: "add very subtle shading behind it as well even
    more subtle than before"). Held close to the words (24px past them, against the 64 to 120 of the oval he said spilled
    onto the film) and very faint (halved at "too much", halved again at "still too much"; then GREY, not black: "make it grey shading"), fading to nothing before its edge. */
-.hero:not(.ch-photo) .hero-copy::before{content:"";position:absolute;z-index:-1;inset:-24px -40px -24px -32px;background:radial-gradient(closest-side,rgba(64,64,64,.3),rgba(64,64,64,.2) 60%,rgba(64,64,64,0));pointer-events:none}
+.hero:not(.ch-photo) .hero-copy::before{content:"";position:absolute;z-index:-1;inset:-24px -40px -24px -32px;background:radial-gradient(closest-side,rgba(48,48,48,.46),rgba(48,48,48,.32) 60%,rgba(48,48,48,0));pointer-events:none}
 .kicker{font-weight:600;font-size:13px;line-height:1.3;letter-spacing:.16em;text-transform:uppercase}
 .hero-h{margin-top:24px;font-weight:700;font-size:clamp(40px,5vw,72px);line-height:1.04;letter-spacing:-.03em}
 .hero-l1{display:block}
@@ -379,6 +387,13 @@ html:not(.js) .hn-copy > div{grid-area:auto;opacity:1;visibility:visible;transfo
 .hf-f select option{color:var(--ink)}
 .hf-f.bad input,.hf-f.bad select{border-color:#FF6B6B;box-shadow:0 0 0 1px #FF6B6B}
 .hf-two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hf-note{display:block;margin-top:12px;text-align:left}
+.hf-note>span{display:block;font-weight:600;font-size:13px;line-height:17px;color:rgba(255,255,255,.92)}
+.hf-opt{font-size:11.5px;font-weight:500;opacity:.8}
+.req{margin-left:2px;font-style:normal;font-weight:700;color:var(--red)}
+.hf .req{color:#FF8A8A}
+.hf-note textarea{display:block;width:100%;height:64px;min-height:44px;margin-top:5px;padding:10px 12px;border:1px solid rgba(255,255,255,.3);border-radius:var(--r);background:rgba(255,255,255,.1);font:inherit;font-size:16px;line-height:22px;color:#fff;resize:vertical;-webkit-appearance:none;appearance:none}
+.hf-note textarea:focus{outline:0;border-color:#fff;background-color:rgba(255,255,255,.16);box-shadow:0 0 0 3px rgba(255,255,255,.18)}
 .hf-two .hf-f select{padding-right:32px;background-position:right 8px center;font-size:15px}
 .hf-go{display:flex;width:100%;justify-content:center;margin-top:20px}
 .hf-small{margin-top:12px;font-size:13.5px;line-height:19px;color:rgba(255,255,255,.85)}
@@ -453,7 +468,7 @@ html.uni .closing-u .cx-go .btn{margin:0}
 .closing-u .hf{flex:0 0 400px;width:400px;box-sizing:border-box}
 @media (max-width:1199px){.band.closing-u{display:flex;flex-direction:column;justify-content:flex-end;align-items:stretch;gap:0;height:auto;padding:0}.closing-u .band-b{position:relative;left:auto;bottom:auto;padding:140px 48px 0}.closing-u .hf{flex:none;width:auto;max-width:520px;margin:48px 48px 72px}}
 @media (max-width:767px){.closing-u .band-b{padding:120px 16px 0}.closing-u .hf{margin:36px 16px 48px}}
-@media (max-width:767px){html.uni .closing-u .band-b{flex:1 1 auto;min-width:0;width:100%;box-sizing:border-box}html.uni .closing-u .cx-trust{white-space:normal;font-size:14px;line-height:20px}html.uni .cf-b{left:16px;right:16px;bottom:16px}html.uni .cf-t{font-size:24px;line-height:28px}html.uni .cf-l1{font-size:15px;line-height:21px}html.uni .diff-a .diff-card b{font-size:24px;line-height:28px}html.uni .closing-u .cx-go .btn{flex:1 1 100%}}
+@media (max-width:767px){html.uni .closing-u .band-b{flex:1 1 auto;min-width:0;width:100%;box-sizing:border-box}.closing-u .cx-trust{white-space:normal;font-size:14px;line-height:20px}html.uni .cf-b{left:16px;right:16px;bottom:16px}html.uni .cf-t{font-size:24px;line-height:28px}html.uni .cf-l1{font-size:15px;line-height:21px}html.uni .diff-a .diff-card b{font-size:24px;line-height:28px}html.uni .closing-u .cx-go .btn{flex:1 1 100%}}
 /* WHAT CAN I CLAIM FOR (Fahad, 2026-10-16), in place of the old gallery. ONLY
    THE TILES AND THEIR MOVEMENT come from his "Featured homes" screenshot ("I
    meant only copy the tiles and their movement"): big round-cornered photo
@@ -524,6 +539,10 @@ html:not(.js) .diff-card p{opacity:1;visibility:visible;font-size:24px;line-heig
 .band-h{margin-top:26px;font-weight:700;font-size:clamp(40px,4.2vw,60px);line-height:1.06;letter-spacing:-.03em}
 .band-b p:not(.eyebrow){max-width:600px;margin-top:20px;font-size:20px;line-height:30px;letter-spacing:-.01em}
 .band-b .btn{margin-top:36px}
+/* OUR MISSION'S WORDS ARE CENTRED IN THE PHOTOGRAPH (Fahad, 2026-11-04: "This section can be centered better by moving
+   it slightly up"): on laptops the block spans the band's full height and centres its contents, where it sat 96px from
+   the foot (339px above, 96 below at 1440 by 900). The closing band and the centred variant keep their own layouts. */
+@media (min-width:768px){.band:not(.closing-u):not(.band-c) .band-b{top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}}
 /* Our mission, centred (Fahad, 2026-10-20, review page home-no-subheads): everything on the middle of the photograph, under an even shade. */
 .band.band-c{display:flex;align-items:center;justify-content:center}
 .band-c::after{background:rgba(22,5,5,.72)}
@@ -721,9 +740,10 @@ html:not(.js) .diff-card p{opacity:1;visibility:visible;font-size:24px;line-heig
 .foot-nav a,.foot-contact a{text-decoration:none}
 .foot-nav a:hover,.foot-contact a:hover{text-decoration:underline;text-underline-offset:4px}
 .foot-social{display:flex;gap:12px}
-.foot-social a{display:grid;place-items:center;width:44px;height:44px;border:1px solid rgba(255,255,255,.4);border-radius:50%;color:#fff;transition:background-color .2s,color .2s,border-color .2s}
+.foot-social a,.foot-soc-off{display:grid;place-items:center;width:44px;height:44px;border:1px solid rgba(255,255,255,.4);border-radius:50%;color:#fff;transition:background-color .2s,color .2s,border-color .2s}
 .foot-social a:hover{background:#fff;border-color:#fff;color:var(--deep)}
 .foot-social svg{width:18px;height:18px;fill:currentColor}
+.foot-soc-off{opacity:.45;cursor:default}
 .foot-contact{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:40px;padding-top:28px;border-top:1px solid rgba(255,255,255,.16);font-size:16px;line-height:24px}
 .foot-contact i{font-style:normal;color:rgba(255,255,255,.5)}
 .legal{max-width:880px;margin-top:28px;font-size:14px;line-height:21px;color:rgba(255,255,255,.82)}
@@ -787,15 +807,16 @@ html:not(.js) .check-back{display:none}
   .logo{gap:8px}
   .logo-m{height:34px}
   .logo-w{height:11.5px}
-  .logo-c,.past .logo-c{height:44px}
+  .logo-c{height:44px}
   .top .btn-bar,.menu-btn{padding:0 10px;font-size:15px}
   .logo-s{height:76px}
 
   .hero{min-height:640px}
   .hero-copy{padding:calc(var(--bar) + 16px) 16px 72px}
-  .hero:not(.ch-photo) .hero-copy::before{inset:-20px -16px;background:linear-gradient(180deg,rgba(64,64,64,0),rgba(64,64,64,.24) 24px,rgba(64,64,64,.24) calc(100% - 24px),rgba(64,64,64,0))}
+  .hero:not(.ch-photo) .hero-copy::before{inset:-20px -16px;background:linear-gradient(180deg,rgba(48,48,48,0),rgba(48,48,48,.38) 24px,rgba(48,48,48,.38) calc(100% - 24px),rgba(48,48,48,0))}
   .hero-h{margin-top:16px;font-size:36px;line-height:38px}
   .hero-para{margin-top:12px;font-size:17px;line-height:26px}
+  .hero-hl{margin-left:-10px;margin-right:-10px;padding:10px}
   .hero-act{flex-direction:column;gap:10px;margin-top:22px}
   .hero-points{margin-top:20px;font-size:14px;flex-wrap:nowrap;white-space:nowrap}
   .hero-points li{padding:0 9px}
@@ -1174,7 +1195,7 @@ html.dk .stories .sh-p,html.dk .guide-u .sh-p{color:rgba(255,255,255,.88)}
 /* ==== HOME, "THOSE CHANGES AINT ENOUGH" (2026-10-19): directions e, f, g ==== */
 /* e: editorial */
 /* THE SERIF IS SITE-WIDE (Fahad, 2026-10-19: "Yes, carry the Editorial serif headings across About us, Start your claim and the claim page"); html.ed is on every page in build.js. */
-html.ed .d2,html.ed .band-h,html.ed .hero-h,html.ed .fq-h,html.ed .art-h1,html.ed .art-body h2,html.ed .ix-t,html.ed .cf-t,html.ed .ga-card h3,html.ed .kinds-list h3,html.ed .after-list h3,html.ed .covers-col h3,html.ed .check-h,html.ed .ways-h{font-family:"Fraunces",Georgia,serif;font-weight:600;letter-spacing:-.01em}
+html.ed .d2,html.ed .band-h,html.ed .hero-h,html.ed .fq-h,html.ed .art-h1,html.ed .art-body h2,html.ed .ix-t,html.ed .cf-t,html.ed .ga-card h3,html.ed .kinds-list h3,html.ed .after-list h3,html.ed .covers-col h3,html.ed .check-h,html.ed .ways-h{font-family:"Plus Jakarta Sans","Trebuchet MS",sans-serif;font-weight:600;letter-spacing:-.01em}
 .ix{padding:var(--sec) var(--gutter);color:var(--ink)}
 .ix .d2{margin-top:26px}
 .ix-list{margin-top:56px;border-top:1px solid #D1D5DB}
@@ -1241,7 +1262,7 @@ html.bt #main>section.facts{overflow:visible}
 @media (max-width:760px){.ix-row{padding:22px 4px}.ix-t{font-size:30px}.fq-h{font-size:21px}.pin-t{font-size:24px}html.bt #main>section:not(.hero){margin:8px;border-radius:20px}html.bt .foot{margin:0 8px 8px;border-radius:20px}.facts-list li{min-height:170px;padding:22px;border-radius:20px}.facts-list b{font-size:30px}}
 
 /* ==== EDITORIAL, THE CLAIMS AS MAGAZINE CARDS (2026-10-19): e2 grid, e3 spread ==== */
-html.ed .mg-t{font-family:"Fraunces",Georgia,serif;letter-spacing:-.01em}
+html.ed .mg-t{font-family:"Plus Jakarta Sans","Trebuchet MS",sans-serif;letter-spacing:-.01em}
 .mg{padding:var(--sec) var(--gutter);color:var(--ink)}
 .mg .d2{margin-top:26px}
 .mg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:56px 28px;margin-top:56px}
@@ -1384,7 +1405,7 @@ html.car .cf-btn:hover{background:var(--red);border-color:var(--red);color:#fff}
 html.car .cf-btn[disabled]{opacity:.25}
 
 /* ==== THE SOLICITORS' PAGE (2026-10-19), /solicitors/, in the Editorial look ==== */
-html.ed .sp-how-list h3,html.ed .sp-areas-list h3,html.ed .sp-steps-list h3,html.ed .sp-comp-h{font-family:"Fraunces",Georgia,serif;font-weight:600;letter-spacing:-.01em}
+html.ed .sp-how-list h3,html.ed .sp-areas-list h3,html.ed .sp-steps-list h3,html.ed .sp-comp-h{font-family:"Plus Jakarta Sans","Trebuchet MS",sans-serif;font-weight:600;letter-spacing:-.01em}
 .sp-areas{display:grid;grid-template-columns:4fr 7fr;gap:72px;padding:0 var(--gutter) var(--sec);color:var(--ink)}
 .sp-areas-head{min-width:0}
 .sp-areas .d2{margin-top:26px}
@@ -1429,6 +1450,7 @@ html.ed .sp-how-list h3,html.ed .sp-areas-list h3,html.ed .sp-steps-list h3,html
 .sp-two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .sp-f{display:block;margin-top:16px}
 .sp-f span{display:block;font-weight:600;font-size:14px;line-height:18px}
+.sp-opt{font-size:12px;font-weight:500;opacity:.75}
 .sp-f input,.sp-f textarea{display:block;width:100%;margin-top:6px;padding:12px 14px;border:1px solid #D1D5DB;border-radius:var(--r);background:#fff;font:inherit;font-size:16px;color:var(--ink)}
 .sp-f input{height:48px}
 .sp-f select{display:block;width:100%;height:48px;margin-top:6px;padding:0 40px 0 14px;border:1px solid #D1D5DB;border-radius:var(--r);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111827' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center/18px;font:inherit;font-size:16px;color:var(--ink);-webkit-appearance:none;appearance:none}
@@ -1510,6 +1532,20 @@ html.ed .sp-how-list h3,html.ed .sp-areas-list h3,html.ed .sp-steps-list h3,html
    register numbers in place of a photograph. */
 .ab-prose{padding-top:calc(var(--bar) + 88px)}
 .ab-reg{grid-template-columns:7fr 5fr;align-items:center}
+.ab-reg .ab-facts{margin-top:40px}
+/* THE FOUR NUMBERS IN ONE ROW (Fahad, 2026-11-03, his pick C on boards/about-reg-layout/): side by side, small label
+   over the figure, divided by thin lines, no rules above or below. Two by two below 1101px, where the column narrows. */
+.ab-reg .ab-facts{display:grid;grid-template-columns:repeat(4,auto);justify-content:start;border-top:0;margin-top:48px}
+.ab-reg .ab-facts li{flex-direction:column;gap:6px;padding:0 24px;border:0;border-left:1px solid rgba(255,255,255,.3)}
+.ab-reg .ab-facts li:first-child{padding-left:0;border-left:0}
+.ab-reg .ab-k{font-size:14px;line-height:20px;color:rgba(255,255,255,.75)}
+.ab-reg .ab-v{font-size:20px;line-height:26px}
+@media (max-width:1100px){.ab-reg .ab-facts{grid-template-columns:1fr 1fr;gap:24px 0}.ab-reg .ab-facts li:nth-child(3){padding-left:0;border-left:0}}
+/* THE REGULATION PHOTO RUNS THE SECTION'S FULL HEIGHT (Fahad, 2026-11-03: "it should be vertiucally longer"): on a
+   desktop the photograph stretches from the eyebrow to the last number instead of sitting as a 4:3 in the middle. */
+@media (min-width:1101px){.ab-reg{align-items:stretch}.ab-reg .sp-comp-ph{position:relative;aspect-ratio:auto;min-height:0}.ab-reg .sp-comp-ph img{position:absolute;inset:0;display:block;height:100%}}
+/* the photograph is laid absolutely inside its frame so a tall picture (his pick R is 2:3) never sets the section's
+   height: the words and numbers do, and the photograph fills that. */
 .ab-facts{margin:0;padding:0;list-style:none;border-top:1px solid rgba(255,255,255,.25)}
 .ab-facts li{display:flex;justify-content:space-between;gap:24px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.25);font-size:17px;line-height:24px}
 .ab-k{color:rgba(255,255,255,.8)}
@@ -1525,7 +1561,7 @@ html.ed .sp-how-list h3,html.ed .sp-areas-list h3,html.ed .sp-steps-list h3,html
    two to three sizes smaller than before, a looser line. Loaded in build.js.
    This supersedes the 2026-10-13 bold-headings ruling; verify() allows 500. */
 html.ed .d2,html.ed .d2b{font-weight:500;font-size:clamp(28px,2.5vw,38px);line-height:1.22;letter-spacing:-.01em}
-html.ed .hero-h{font-weight:500;font-size:clamp(36px,4.2vw,56px);line-height:1.1;letter-spacing:-.015em}
+html.ed .hero-h{font-weight:600;font-size:clamp(36px,4.2vw,56px);line-height:1.1;letter-spacing:-.015em}
 html.ed .band-h{font-weight:500;font-size:clamp(30px,3vw,42px);line-height:1.15;letter-spacing:-.01em}
 /* Our mission's heading as it was before the type scale (Fahad, 2026-10-20, "Older look", review page home-stories-cards). */
 html.ed .band-old .band-h{font-weight:600;font-size:clamp(40px,4.2vw,60px);line-height:1.06;letter-spacing:-.03em}
@@ -1567,7 +1603,7 @@ html.ed .gi-head .d2,html.ed .sp-prose .d2{max-width:22ch}
 .hh-grid .w2 .cf-t{font-size:clamp(30px,2.6vw,38px)}
 .hh-grid .cf-t::after{display:none}
 .hh-grid .cf-l1{display:block;margin-top:8px;font-weight:400;font-size:16px;line-height:1.45;letter-spacing:0;text-transform:none}
-html.ed .hh-grid .cf-t{font-family:"Fraunces",Georgia,serif;font-weight:500}
+html.ed .hh-grid .cf-t{font-family:"Plus Jakarta Sans","Trebuchet MS",sans-serif;font-weight:500}
 @media (max-width:900px){.hh-grid{grid-template-columns:1fr 1fr}.hh-tile.w2{grid-column:span 2}}
 @media (max-width:767px){.cf-hh{padding:var(--sec) 16px}.hh-grid{grid-template-columns:1fr;gap:12px;margin-top:28px}.hh-tile.w2{grid-column:auto}.hh-grid .cf-card{min-height:220px}.hh-grid .cf-b{padding:20px}.hh-grid .cf-t,.hh-grid .w2 .cf-t{font-size:24px}}
 
@@ -1600,7 +1636,7 @@ html.hhs .cf-ill .cf-t,html.hhs .cf-ill .cf-l1{color:#fff}
 /* ===== CONTACT US: THE HOUSING HELPLINE'S CHECK, COPIED (Fahad, 2026-10-20, "copy it exactly"). Its page.css numbers, in this site's type and red. ===== */
 .cq-page{display:flex;flex-direction:column;align-items:center;padding:calc(var(--bar) + 72px) var(--gutter) var(--sec);background:var(--grey);color:var(--ink)}
 .cq-head{text-align:center;max-width:760px;margin-bottom:36px}
-.cq-head h1{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:clamp(40px,4.45vw,64px);line-height:1.1;letter-spacing:-.01em}
+.cq-head h1{font-family:"Plus Jakarta Sans","Trebuchet MS",sans-serif;font-weight:500;font-size:clamp(40px,4.45vw,64px);line-height:1.1;letter-spacing:-.01em}
 .cq-head p{margin-top:12px;font-size:18px;line-height:28px;color:#374151;text-wrap:balance}
 .cq-u{position:relative;font-style:italic;white-space:nowrap}
 .cq-u svg{position:absolute;left:-2%;bottom:-.08em;width:104%;height:.22em;color:var(--red);overflow:visible}
@@ -1612,7 +1648,7 @@ html.hhs .cf-ill .cf-t,html.hhs .cf-ill .cf-l1{color:#fff}
 .cq-bar i{display:block;height:100%;width:25%;background:var(--red);transition:width .35s ease}
 .cq-q{margin:0;padding:0;border:0;min-width:0}
 .cq-q+.cq-q{margin-top:28px}
-.cq-q legend{padding:0;margin-bottom:18px;font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:32px;line-height:1.15}
+.cq-q legend{padding:0;margin-bottom:18px;font-family:"Plus Jakarta Sans","Trebuchet MS",sans-serif;font-weight:500;font-size:32px;line-height:1.15}
 .cq-opts{display:grid;gap:10px}
 .cq-opts.two{grid-template-columns:1fr 1fr}
 .cq-opt{position:relative;display:flex;cursor:pointer}
@@ -1639,7 +1675,7 @@ html.hhs .cf-ill .cf-t,html.hhs .cf-ill .cf-l1{color:#fff}
 .cq-done{text-align:center;padding:24px 0}
 .cq-done-i{display:inline-grid;place-items:center;width:54px;height:54px;border-radius:50%;background:#FFF5F4;color:var(--red);margin-bottom:14px}
 .cq-done-i svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.cq-done-h{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:30px;line-height:1.15}
+.cq-done-h{font-family:"Plus Jakarta Sans","Trebuchet MS",sans-serif;font-weight:500;font-size:30px;line-height:1.15}
 .cq-done-s{margin-top:10px;font-size:17px;line-height:26px;color:#374151}
 .cq-done-s a{color:var(--ink)}
 .cq-free{width:100%;max-width:640px;margin-top:28px;padding-top:14px;border-top:1px solid #E5E7EB;text-align:center;font-size:15px;line-height:1.5;color:#374151}
@@ -1655,8 +1691,130 @@ html.hhs .cf-ill .cf-t,html.hhs .cf-ill .cf-l1{color:#fff}
 html.uni .closing-u .cx-trust i{color:transparent}
 @media (max-width:767px){.cx-trust i{height:16px;margin:0 9px}}
 @media (max-width:389px){.cx-trust i{margin:0 7px}}
+
+/* The seventh claim card (the client, 2026-10-30: "add don't see your claim, contact us"): the deep red, no photograph. */
+.cf-card.cf-more,html.hhs.car .cf-wrap .cf-track .cf-card.cf-more{background:var(--deep)}
+.cf-more .cf-t{text-shadow:none}
+
+/* NO SERIF ANYWHERE (Fahad, 2026-11-03: "make the font san seriff wherever its currently serrif"). Every heading that was
+   Fraunces is now Plus Jakarta Sans, the body font; Fraunces is no longer loaded. Reverses the 2026-10-19 Editorial serif. */
+
+/* HOW IT WORKS, STEPPED BY SCROLLING (Fahad, 2026-11-03, his pick "A"). app.js wraps .diff-pin in .how-run (the runway)
+   and holds it under the bar on a desktop (.how-pin); a red line grows down the timeline, the photograph eases in from a
+   slight zoom, the words rise. The home page only; the claim pages keep the plain tabs. */
+.how-run{position:relative}
+.how-pin{position:sticky}
+.diff-pin .diff-tabs::after{content:"";position:absolute;left:21px;top:34px;bottom:34px;width:2px;background:var(--deep-2);transform-origin:50% 0;transform:scaleY(var(--hp,0))}
+.diff-pin .diff-tabs .num{transition:background-color .3s,border-color .3s,color .3s}
+.diff-pin .diff-stage img{transform:scale(1.08);transition:opacity .7s,transform 1.6s cubic-bezier(.2,.7,.2,1)}
+.diff-pin .diff-stage img.on{transform:scale(1)}
+.diff-pin .diff-card p{transform:translateY(28px);transition:opacity .5s,transform .7s cubic-bezier(.2,.7,.2,1),visibility .5s}
+.diff-pin .diff-card p.on{transform:none;transition-delay:.15s}
+@media (min-width:761px){.diff-pin .diff-tabs::after{top:22px;bottom:22px}}
+@media (prefers-reduced-motion:reduce){.diff-pin .diff-stage img,.diff-pin .diff-card p{transform:none}}
+
+/* THE CONTACT FORM PAGE, ROUND TWO (Fahad, 2026-11-03), built from Fletchers' contact form (pages.js says why): a cream
+   ground, white boxes with a thin dark border and 4px corners, 14px labels, a light heading, no chips, icons or card.
+   Everything on one laptop screen: the section fills the screen under the bar and centres its two columns. */
+.top-focus{gap:16px}
+.focus-back{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 4px;color:#fff;font-size:15px;font-weight:500;text-decoration:none}
+.focus-back svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.focus-back:hover{text-decoration:underline;text-underline-offset:4px}
+.kf{display:flex;align-items:center;min-height:100vh;min-height:100svh;padding:calc(var(--bar) + 32px) var(--gutter) 40px;background:#FBF8F3}
+.kf-in{width:100%;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:4fr 6fr;gap:88px;align-items:center}
+.kf-h{margin-top:22px;font-weight:300;font-size:clamp(32px,3vw,44px);line-height:1.12;letter-spacing:-.015em;color:var(--ink)}
+.kf-lead{margin-top:18px;font-size:17px;line-height:27px;color:#2E2E2E}
+.kf-pt{margin-top:28px;font-size:15px;line-height:22px;color:#5B5B5B}
+.kf-pt a,.kf-under a{color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(17,24,39,.3)}
+.kf-pt a:hover,.kf-under a:hover{color:var(--deep-2);border-bottom-color:currentColor}
+.kf-col{position:relative;min-width:0}
+/* THE WORDS SIT ON THE CARD'S MIDDLE (Fahad, 2026-11-03: "lets align this better so its centered"): on a desktop the
+   line under the card hangs below it without adding to the column, so the left block centres on the card itself, and the
+   block centres in its half of the page. */
+@media (min-width:1101px){.kf-side{justify-self:center}.kf-under{position:absolute;left:0;right:0;top:100%}}
+/* call and email in one line under the card (his pick F, boards/contact-left/) */
+.kf-under{margin-top:18px;text-align:center;font-size:15px;line-height:22px;color:#2E2E2E}
+.kf-side{min-width:0}
+/* THE FORM IS ON A WHITE CARD (Fahad, same day: "the right side should still have a white card that clearly
+   distinguishes it as a form to fill out"): plain, a hairline edge, 8px corners, a soft low shadow; no colour. */
+.kf-form{position:relative;padding:40px 44px;border:1px solid #E7E0D6;border-radius:8px;background:#fff;box-shadow:0 30px 60px -42px rgba(46,30,20,.35)}
+.kf-nc{position:absolute;top:-13px;left:44px;background:#FDE68A;color:#451A03;font-size:13px;font-weight:600;line-height:18px;padding:4px 10px;border-radius:999px}
+.kf-fh{font-weight:300;font-size:30px;line-height:1.2;letter-spacing:-.01em;color:var(--ink)}
+.kf-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px;margin-top:22px}
+.kf-wide{grid-column:1/-1}
+.kf-f{display:block}
+.kf-f>span{display:block;font-size:14px;font-weight:400;line-height:20px;color:#2E2E2E}
+.kf-req>span{color:#2E2E2E}
+.kf-f input,.kf-f select,.kf-f textarea{display:block;width:100%;height:52px;margin-top:8px;padding:0 16px;border:1px solid #2E2E2E;border-radius:4px;background:#fff;font:inherit;font-size:16px;color:var(--ink);transition:box-shadow .2s,border-color .2s;-webkit-appearance:none;appearance:none}
+.kf-f select{background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111827' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 16px center/16px;padding-right:44px}
+.kf-f textarea{height:auto;min-height:112px;padding:14px 16px;line-height:24px;resize:vertical}
+.kf-f input:focus,.kf-f select:focus,.kf-f textarea:focus{outline:0;border-color:#5C0000;box-shadow:0 0 0 3px rgba(92,0,0,.12)}
+.kf-f.bad input{border-color:#B40000;box-shadow:0 0 0 1px #B40000}
+.kf-end{display:flex;align-items:center;justify-content:space-between;gap:32px;margin-top:22px}
+.kf-fine{max-width:420px;font-size:13.5px;line-height:20px;color:#5B5B5B}
+.kf-fine a{color:inherit}
+.kf-go{flex:none;min-width:200px;min-height:52px}
+.kf-msg{margin-top:12px;font-size:15px;line-height:22px;color:#B40000}
+.kf-done .kf-lead a{color:var(--deep-2)}
+.kf-form.sent>:not(.kf-done):not(.kf-nc){display:none}
+/* short laptop screens (720 to 800 tall): the same page, a little tighter, so it still fits without scrolling */
+@media (min-width:1101px) and (max-height:800px){.kf-form{padding:28px 36px}.kf{padding-top:calc(var(--bar) + 20px);padding-bottom:24px}.kf-h{margin-top:16px;font-size:34px}.kf-lead{margin-top:12px;font-size:16px;line-height:25px}.kf-grid{gap:14px 20px;margin-top:16px}.kf-f input,.kf-f select{height:48px}.kf-f textarea{min-height:92px}.kf-end{margin-top:16px}}
+@media (max-width:1100px){.kf{display:block;min-height:0}.kf-in{grid-template-columns:1fr;gap:48px}}
+@media (max-width:767px){.kf{padding:calc(var(--bar) + 40px) 16px 64px}.kf-form{padding:32px 20px 24px}.kf-nc{left:20px}.kf-grid{grid-template-columns:1fr}.kf-end{flex-direction:column;align-items:stretch;gap:16px}.kf-go{width:100%}.kf-lead{font-size:16px;line-height:26px}.focus-back{font-size:14px}}
+@media (max-width:767px){.kf{padding:calc(var(--bar) + 40px) 16px 72px}.kf-card{padding:32px 20px 28px;border-radius:12px}.kf-two{grid-template-columns:1fr;gap:0}.kf-lead{font-size:17px;line-height:27px}.focus-back{font-size:14px}}
+
+/* THE LEGAL PAGES (2026-11-03, src/legal.js): one calm reading column on white, the site's type, numbered by nothing;
+   a draft note and amber "To be confirmed" marks until Claim 3000 approves them. Footer links on every page. */
+.lg{max-width:800px;margin:0 auto;padding:calc(var(--bar) + 72px) var(--gutter) 112px}
+.lg-head{padding-bottom:4px}
+.lg-h{margin-top:22px;font-weight:500;font-size:clamp(34px,3.4vw,48px);line-height:1.12;letter-spacing:-.015em;color:var(--ink)}
+.lg-lead{margin-top:18px;font-size:19px;line-height:30px;color:#374151}
+.lg-date{margin-top:14px;font-size:14px;line-height:20px;color:#6B7280}
+.lg-draft{margin-top:22px;padding:12px 16px;border-radius:6px;background:#FEF3C7;color:#451A03;font-size:15px;line-height:22px}
+.lg-body{margin-top:48px;border-top:1px solid #E5E7EB}
+.lg-sec{padding-top:36px}
+.lg-sec h2{font-weight:600;font-size:22px;line-height:30px;color:var(--ink)}
+.lg-sec p,.lg-sec li{font-size:17px;line-height:28px;color:#1F2937}
+.lg-sec p{margin-top:14px}
+.lg-sec ul{margin:14px 0 0;padding-left:22px}
+.lg-sec li+li{margin-top:6px}
+.lg-sec a{color:var(--deep-2)}
+.lg-tbc{display:inline;padding:1px 6px;border-radius:4px;background:#FEF3C7;color:#451A03;font-size:15px;line-height:24px;font-weight:500}
+.lg-table{margin-top:14px;overflow-x:auto}
+.lg-table table{width:100%;border-collapse:collapse;font-size:16px;line-height:24px}
+.lg-table th,.lg-table td{padding:10px 12px;border-bottom:1px solid #E5E7EB;text-align:left;vertical-align:top}
+.lg-table th{font-weight:600;color:var(--ink)}
+.foot-legal{margin-top:10px}
+.foot-legal a{color:inherit}
+.foot-legal i{margin:0 8px;font-style:normal}
+@media (max-width:767px){.lg{padding:calc(var(--bar) + 40px) 16px 72px}.lg-lead{font-size:17px;line-height:27px}.lg-sec p,.lg-sec li{font-size:16px;line-height:26px}}
+
+/* THE COOKIE BANNER (2026-11-03; classes cky-*, renamed 2026-11-04: as ck-* they clashed with the claim page's ck section): a quiet white card at the foot of the screen, above everything; Accept and Reject the
+   same size and style (equal weight). Phones: full width at the bottom. */
+.cky{position:fixed;left:24px;bottom:24px;z-index:80;width:min(440px,calc(100vw - 48px));padding:20px 22px;border:1px solid #E5E7EB;border-radius:8px;background:#fff;box-shadow:0 24px 60px -24px rgba(17,24,39,.35);color:var(--ink)}
+.cky[hidden]{display:none}
+.cky-t{font-size:15px;line-height:23px;color:#1F2937}
+.cky-t a{color:var(--ink)}
+.cky-b{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.cky-btn{min-height:44px;padding:0 16px;border:1px solid var(--ink);border-radius:var(--r);background:#fff;color:var(--ink);font:inherit;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.cky-btn:hover{background:var(--ink);color:#fff}
+.foot-ck{padding:0;border:0;background:none;color:inherit;font:inherit;text-decoration:underline;cursor:pointer}
+@media (max-width:767px){.cky{left:12px;right:12px;bottom:12px;width:auto;padding:18px}}
+/* footer legal links and Cookie settings: a 44px tap height on phones and tablets, same look (sweep 2026-11-04) */
+@media (max-width:1024px){.foot-legal a,.foot-ck{display:inline-block;min-height:44px;line-height:44px}}
+
+/* PHONE AND TABLET SWEEP FIXES (2026-11-04, WebKit at 320 to 1024 wide):
+   - Our mission's words were 720px wide from 63px in on a 768px tablet, so the heading ran under the right edge: on
+     tablets the block keeps the gutter on both sides.
+   - The cookie table is tighter on phones. */
+@media (min-width:768px) and (max-width:1023px){.band:not(.closing-u):not(.band-c) .band-b{right:var(--gutter);max-width:none}}
+@media (max-width:767px){.lg-table table{font-size:15px;line-height:22px}.lg-table th,.lg-table td{padding:8px 6px}}
+/* on the narrowest phones (under 360px, e.g. iPhone SE) the hero trust line may wrap rather than lose "Personal support" off the edge (sweep 2026-11-04) */
+@media (max-width:359px){.hero-points{flex-wrap:wrap!important;white-space:normal!important;gap:6px 14px!important}.hero-points li{padding:0!important;border-left:0!important}}
+/* the closing trust line wraps on phones: as three points with even gaps and no dividers, so no divider dangles at a line end */
+@media (max-width:767px){.closing-u .cx-trust{display:flex;flex-wrap:wrap;gap:4px 16px}.closing-u .cx-trust i{display:none}}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Claim 3000","legalName":"Claim 3000 Ltd","url":"https://claim3000.co.uk/","email":"info@claim3000.co.uk","telephone":"+443333553000","address":{"@type":"PostalAddress","streetAddress":"Unit 31, Cariocca Business Park, Hellidon Close","addressLocality":"Manchester","postalCode":"M12 4AH","addressCountry":"GB"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Claim 3000","legalName":"Claim3000 Ltd","url":"https://claim3000.co.uk/","email":"info@claim3000.co.uk","telephone":"+443333553000","address":{"@type":"PostalAddress","streetAddress":"Unit 31, Cariocca Business Park, Hellidon Close","addressLocality":"Manchester","postalCode":"M12 4AH","addressCountry":"GB"}}</script>
 </head>
 <body>
 
@@ -1666,10 +1824,10 @@ html.uni .closing-u .cx-trust i{color:transparent}
   <nav class="nm" aria-label="Main">
     <ul class="nm-list">
       <li><a class="nm-trig" href="#claims" aria-controls="nm-claims">Claims<svg viewBox="0 0 10 6" width="10" height="6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m1 1 4 4 4-4"/></svg></a></li>
-      <li><a class="nm-link" href="/claim3000-five-preview/solicitors/">For solicitors</a></li>
+      <li><a class="nm-link" href="/claim3000-five-preview/partners/">For partners</a></li>
       <li><a class="nm-link" href="/claim3000-five-preview/about-us/">About us</a></li>
       <li><a class="nm-link" href="/claim3000-five-preview/guides/">Articles</a></li>
-      <li><a class="nm-link" href="#start">Contact us</a></li>
+      <li><a class="nm-link" href="/claim3000-five-preview/contact-us/">Contact us</a></li>
     </ul>
     <div class="nm-pos"><div class="nm-viewport"><div class="nm-content" id="nm-claims"><ul class="nm-grid"><li><a class="nm-item" href="/claim3000-five-preview/claims/personal-injury/"><span class="nm-t">Personal injury</span><span class="nm-d">Injuries following road traffic accidents, accidents at work or in public places.</span></a></li><li><a class="nm-item" href="#claim-medical-negligence"><span class="nm-t">Medical negligence</span><span class="nm-d">Harm caused by medical care that may have fallen below acceptable standards.</span></a></li><li><a class="nm-item" href="#claim-sports-injury"><span class="nm-t">Sports injury</span><span class="nm-d">Injuries during sport where someone else's actions may have been responsible.</span></a></li><li><a class="nm-item" href="#claim-slips-trips-falls"><span class="nm-t">Slips, trips and falls</span><span class="nm-d">Injuries from slipping, tripping or falling where someone else may be responsible.</span></a></li><li><a class="nm-item" href="https://www.thepcpclaimscompany.co.uk/" target="_blank" rel="noopener"><span class="nm-t">Mis-sold car finance</span><span class="nm-d">PCP and other car finance agreements that may have been mis-sold.</span></a></li><li><a class="nm-item" href="https://mfahadishtiaq.github.io/housing-helpline-preview/" target="_blank" rel="noopener"><span class="nm-t">Housing disrepair</span><span class="nm-d">Damp, mould and other repair problems your landlord has left unresolved.</span></a></li></ul></div></div></div>
   </nav>
@@ -1686,10 +1844,10 @@ html.uni .closing-u .cx-trust i{color:transparent}
   <a class="sheet-claim" href="https://www.thepcpclaimscompany.co.uk/" target="_blank" rel="noopener">Mis-sold car finance</a>
   <a class="sheet-claim" href="https://mfahadishtiaq.github.io/housing-helpline-preview/" target="_blank" rel="noopener">Housing disrepair</a>
   <p class="sheet-h">Claim 3000</p>
-  <a href="/claim3000-five-preview/solicitors/">For solicitors</a>
+  <a href="/claim3000-five-preview/partners/">For partners</a>
   <a href="/claim3000-five-preview/about-us/">About us</a>
   <a href="/claim3000-five-preview/guides/">Articles</a>
-  <a href="#start">Contact us</a>
+  <a href="/claim3000-five-preview/contact-us/">Contact us</a>
   <a class="btn btn-line-w" href="tel:03333553000">Call us</a>
   <a class="btn btn-white" href="/claim3000-five-preview/start-your-claim/">Start your claim</a>
 </nav>
@@ -1702,18 +1860,18 @@ html.uni .closing-u .cx-trust i{color:transparent}
   <video class="hero-v" autoplay muted loop playsinline preload="auto" poster="/claim3000-five-preview/film/hero-film-poster.jpg" aria-hidden="true" tabindex="-1"><source src="/claim3000-five-preview/film/hero-film.mp4" type="video/mp4"></video>
   <div class="hero-copy">
     <h1 class="hero-h"><span class="hero-l1">The Claims</span> <span class="hero-l2">Management Specialist</span></h1>
-    <p class="hero-para hero-para-l">At Claim 3000, we make the compensation claims process simple and stress-free. Our experienced claim experts support you with a wide range of claims, including road traffic accidents, personal injury, medical negligence, workplace injuries, housing disrepair and PCP car finance claims. With no win, no fee and no upfront payments, you can take the first step towards claiming with confidence.</p>
-    <ul class="hero-points"><li>No win, no fee</li><li>FCA regulated</li><li>Personal support</li></ul>
+    <p class="hero-para hero-para-l hero-hl">At Claim 3000, we make the compensation claims process simple and stress-free. Our experienced claim experts support you with a wide range of claims, including road traffic accidents, personal injury, medical negligence, workplace injuries, housing disrepair and PCP car finance claims. You do not pay anything to begin your claim, so you can take the first step with confidence.</p>
+    <ul class="hero-points"><li>Free claim check</li><li>FCA regulated</li><li>Personal support</li></ul>
   </div>
   
   <form class="hf" id="hf" action="mailto:info@claim3000.co.uk" method="post" aria-labelledby="hf-h" novalidate>
     <span class="gate">Not connected yet: sends by email</span>
     <p class="hf-n">Free, no obligation</p>
     <h2 class="hf-h" id="hf-h">Start your claim</h2>
-    <div class="hf-two"><label class="hf-f"><span>Your claim</span><select name="claim" required><option value="">Choose one</option><option value="personal-injury">Personal injury</option><option value="medical-negligence">Medical negligence</option><option value="sports-injury">Sports injury</option><option value="slips-trips-falls">Slips, trips and falls</option><option value="car-finance">Mis-sold car finance</option><option value="housing-disrepair">Housing disrepair</option></select></label>
-    <label class="hf-f"><span>When it happened</span><select name="when" required><option value="">Choose one</option><option>In the last year</option><option>One to three years ago</option><option>More than three years ago</option><option>I am not sure</option></select></label></div>
-    <label class="hf-f"><span>Full name</span><input name="name" autocomplete="name" required></label>
-    <div class="hf-two"><label class="hf-f"><span>Phone</span><input name="phone" type="tel" autocomplete="tel" required></label><label class="hf-f"><span>Email</span><input name="email" type="email" autocomplete="email" required></label></div>
+    <label class="hf-f"><span>Your claim<i class="req" aria-hidden="true">*</i></span><select name="claim" required><option value="">Choose one</option><option value="personal-injury">Personal injury</option><option value="medical-negligence">Medical negligence</option><option value="sports-injury">Sports injury</option><option value="slips-trips-falls">Slips, trips and falls</option><option value="car-finance">Mis-sold car finance</option><option value="housing-disrepair">Housing disrepair</option></select></label>
+    <label class="hf-f"><span>Full name<i class="req" aria-hidden="true">*</i></span><input name="name" autocomplete="name" required></label>
+    <div class="hf-two"><label class="hf-f"><span>Phone<i class="req" aria-hidden="true">*</i></span><input name="phone" type="tel" autocomplete="tel" required></label><label class="hf-f"><span>Email<i class="req" aria-hidden="true">*</i></span><input name="email" type="email" autocomplete="email" required></label></div>
+    <label class="hf-note"><span>Anything else <small class="hf-opt">(optional)</small></span><textarea name="message" rows="2"></textarea></label>
     <button class="btn btn-red hf-go" type="submit">Start my claim</button>
     <p class="hf-small">Claim 3000 will contact you within 24 hours to discuss your enquiry. Or <a href="tel:03333553000">call us</a>.</p>
     <p class="hf-msg" role="status" hidden></p>
@@ -1737,7 +1895,7 @@ html.uni .closing-u .cx-trust i{color:transparent}
       <button role="tab" type="button" id="dt0" aria-controls="dp0" aria-selected="true"><span><i class="num">1</i>Tell us what happened</span><svg viewBox="0 0 74 44" aria-hidden="true"><path d="M0 22h72M52 2l20 20-20 20"/></svg></button>
       <button role="tab" type="button" id="dt1" aria-controls="dp1" aria-selected="false" tabindex="-1"><span><i class="num">2</i>We review your enquiry</span><svg viewBox="0 0 74 44" aria-hidden="true"><path d="M0 22h72M52 2l20 20-20 20"/></svg></button>
       <button role="tab" type="button" id="dt2" aria-controls="dp2" aria-selected="false" tabindex="-1"><span id="solicitors"><i class="num">3</i>Your solicitor match</span><svg viewBox="0 0 74 44" aria-hidden="true"><path d="M0 22h72M52 2l20 20-20 20"/></svg></button>
-      <button role="tab" type="button" id="dt3" aria-controls="dp3" aria-selected="false" tabindex="-1"><span><i class="num">4</i>No win, no fee</span><svg viewBox="0 0 74 44" aria-hidden="true"><path d="M0 22h72M52 2l20 20-20 20"/></svg></button>
+      <button role="tab" type="button" id="dt3" aria-controls="dp3" aria-selected="false" tabindex="-1"><span><i class="num">4</i>Nothing to pay upfront</span><svg viewBox="0 0 74 44" aria-hidden="true"><path d="M0 22h72M52 2l20 20-20 20"/></svg></button>
     </div>
     <p class="diff-intro">From paperwork to progress updates, we help you manage each stage of your claim.</p>
     <p class="diff-go"><a class="btn btn-red" href="/claim3000-five-preview/start-your-claim/">Start your claim</a></p>
@@ -1752,7 +1910,7 @@ html.uni .closing-u .cx-trust i{color:transparent}
       <p class="on" id="dp0" role="tabpanel" aria-labelledby="dt0"><b>Tell us what happened</b> Complete the short form with your claim details and how we can contact you.</p>
       <p id="dp1" role="tabpanel" aria-labelledby="dt1"><b>We assess your circumstances</b> Claim 3000 reviews your enquiry and contacts you within 24 hours to talk through your claim and the next steps.</p>
       <p id="dp2" role="tabpanel" aria-labelledby="dt2"><b>We arrange the next step</b> If you qualify, we match you with a solicitor using our internal criteria and keep you updated as your case progresses.</p>
-      <p id="dp3" role="tabpanel" aria-labelledby="dt3"><b>You pay nothing until your case is won</b> No win, no fee means you do not pay anything until your case is won.</p>
+      <p id="dp3" role="tabpanel" aria-labelledby="dt3"><b>Nothing to pay to begin your claim</b> You do not pay anything to begin your claim. Your solicitor explains their fees in writing before you agree to go ahead.</p>
     </div>
   </div>
 </section>
@@ -1795,7 +1953,7 @@ html.uni .closing-u .cx-trust i{color:transparent}
     <p class="eyebrow">Your next step</p>
     <h2 class="band-h" id="closing-h">Start your claim today</h2>
     <p>Tell us what happened for a free, no obligation assessment. Claim 3000 will contact you within 24 hours.</p>
-    <p class="cx-trust">No win, no fee<i aria-hidden="true">&middot;</i>FCA regulated<i aria-hidden="true">&middot;</i>Personal support</p>
+    <p class="cx-trust"><span>Free claim check</span><i aria-hidden="true">&middot;</i><span>FCA regulated</span><i aria-hidden="true">&middot;</i><span>Personal support</span></p>
     <p class="cx-go cx-row"><a class="btn btn-line-w" href="tel:03333553000">Call us</a><a class="btn btn-line-w" href="mailto:info@claim3000.co.uk">Email us</a></p>
   </div>
   
@@ -1803,10 +1961,10 @@ html.uni .closing-u .cx-trust i{color:transparent}
     <span class="gate">Not connected yet: sends by email</span>
     <p class="hf-n">Free, no obligation</p>
     <h2 class="hf-h" id="cf-form-h">Start your claim</h2>
-    <div class="hf-two"><label class="hf-f"><span>Your claim</span><select name="claim" required><option value="">Choose one</option><option value="personal-injury">Personal injury</option><option value="medical-negligence">Medical negligence</option><option value="sports-injury">Sports injury</option><option value="slips-trips-falls">Slips, trips and falls</option><option value="car-finance">Mis-sold car finance</option><option value="housing-disrepair">Housing disrepair</option></select></label>
-    <label class="hf-f"><span>When it happened</span><select name="when" required><option value="">Choose one</option><option>In the last year</option><option>One to three years ago</option><option>More than three years ago</option><option>I am not sure</option></select></label></div>
-    <label class="hf-f"><span>Full name</span><input name="name" autocomplete="name" required></label>
-    <div class="hf-two"><label class="hf-f"><span>Phone</span><input name="phone" type="tel" autocomplete="tel" required></label><label class="hf-f"><span>Email</span><input name="email" type="email" autocomplete="email" required></label></div>
+    <label class="hf-f"><span>Your claim<i class="req" aria-hidden="true">*</i></span><select name="claim" required><option value="">Choose one</option><option value="personal-injury">Personal injury</option><option value="medical-negligence">Medical negligence</option><option value="sports-injury">Sports injury</option><option value="slips-trips-falls">Slips, trips and falls</option><option value="car-finance">Mis-sold car finance</option><option value="housing-disrepair">Housing disrepair</option></select></label>
+    <label class="hf-f"><span>Full name<i class="req" aria-hidden="true">*</i></span><input name="name" autocomplete="name" required></label>
+    <div class="hf-two"><label class="hf-f"><span>Phone<i class="req" aria-hidden="true">*</i></span><input name="phone" type="tel" autocomplete="tel" required></label><label class="hf-f"><span>Email<i class="req" aria-hidden="true">*</i></span><input name="email" type="email" autocomplete="email" required></label></div>
+    <label class="hf-note"><span>Anything else <small class="hf-opt">(optional)</small></span><textarea name="message" rows="2"></textarea></label>
     <button class="btn btn-red hf-go" type="submit">Start my claim</button>
     <p class="hf-small">Claim 3000 will contact you within 24 hours to discuss your enquiry. Or <a href="tel:03333553000">call us</a>.</p>
     <p class="hf-msg" role="status" hidden></p>
@@ -1819,15 +1977,21 @@ html.uni .closing-u .cx-trust i{color:transparent}
     <div class="foot-top">
       <a class="wordmark" href="/claim3000-five-preview/" aria-label="Claim 3000, home"><img class="logo-s" src="/claim3000-five-preview/logo/claim-3000.png" alt="" width="83" height="88"></a>
       <ul class="foot-nav"><li><a href="#claims">Claims</a></li><li><a href="#how">How it works</a></li><li><a href="/claim3000-five-preview/guides/">Guidance</a></li><li><a href="/claim3000-five-preview/about-us/">About us</a></li></ul>
-      <ul class="foot-social"><li><a href="#" aria-label="Claim 3000 on X (Twitter)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a></li><li><a href="#" aria-label="Claim 3000 on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.948 1.637-1.948 3.37-1.948 3.601 0 4.267 2.37 4.267 5.455v6.284zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></li><li><a href="#" aria-label="Claim 3000 on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a></li></ul>
+      <ul class="foot-social"><li><span class="foot-soc-off" title="X (Twitter): coming soon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></span></li><li><a href="https://www.linkedin.com/company/claim%C2%A33000-ltd/about/" target="_blank" rel="noopener" aria-label="Claim 3000 on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.948 1.637-1.948 3.37-1.948 3.601 0 4.267 2.37 4.267 5.455v6.284zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></li><li><span class="foot-soc-off" title="Facebook: coming soon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></span></li></ul>
     </div>
     <p class="foot-contact"><a href="tel:03333553000">0333 355 3000</a><i aria-hidden="true">&middot;</i><a href="tel:01612220606">0161 222 0606</a><i aria-hidden="true">&middot;</i><a href="mailto:info@claim3000.co.uk">info@claim3000.co.uk</a><i aria-hidden="true">&middot;</i><span>Registered office: Unit 31, Cariocca Business Park, Hellidon Close, Ardwick, Manchester M12 4AH</span></p>
     <div class="legal">
-      <p>Claim 3000 is a trading name of Claim 3000 Ltd, registered in England and Wales under company number 09371796, registered office as above. Claim 3000 Ltd is authorised and regulated by the Financial Conduct Authority in respect of regulated claims management activity, firm reference number <a href="https://register.fca.org.uk/s/search?q=833604&type=Companies" target="_blank" rel="noopener">833604</a>. VAT number 230852232.</p>
-      <p>You do not have to use a claims management company to make a claim. You can make a claim yourself. &copy; 2026 Claim 3000 Ltd. Pictures marked Example are illustrations.</p>
+      <p>Claim 3000 is a trading name of Claim3000 Ltd, registered in England and Wales under company number 09371796, registered office as above. Claim3000 Ltd is authorised and regulated by the Financial Conduct Authority in respect of regulated claims management activity, firm reference number <a href="https://register.fca.org.uk/s/search?q=833604&type=Companies" target="_blank" rel="noopener">833604</a>. VAT number 230852232.</p>
+      <p>You do not have to use a claims management company to make a claim. You can make a claim yourself. &copy; 2026 Claim3000 Ltd. Pictures marked Example are illustrations.</p>
+      <p class="foot-legal"><a href="/claim3000-five-preview/privacy-policy/">Privacy policy</a><i aria-hidden="true">&middot;</i><a href="/claim3000-five-preview/terms/">Terms of use</a><i aria-hidden="true">&middot;</i><a href="/claim3000-five-preview/cookies/">Cookies</a><i aria-hidden="true">&middot;</i><a href="/claim3000-five-preview/complaints/">Complaints</a><i aria-hidden="true">&middot;</i><button class="foot-ck" type="button" data-ck-open>Cookie settings</button></p>
     </div>
   </div>
 </footer>
+
+<div class="cky" id="cky" role="region" aria-label="Cookie choices" data-ga="" hidden>
+  <p class="cky-t">We would like to use analytics cookies to understand how people use this website, so we can improve it. They are only set if you accept. <a href="/claim3000-five-preview/cookies/">Cookie policy</a></p>
+  <div class="cky-b"><button class="cky-btn" type="button" data-ck="denied">Reject</button><button class="cky-btn" type="button" data-ck="granted">Accept</button></div>
+</div>
 <script>/* CLAIM 3000, SITE FIVE: behaviour.
  *
  *   the bar           clear over the film, coloured once the page has moved;
@@ -1971,11 +2135,30 @@ html.uni .closing-u .cx-trust i{color:transparent}
     if (/^mailto:/.test(hf.getAttribute('action'))) {
       e.preventDefault();
       var v = function (n) { var x = hf.elements[n]; return x.options ? x.options[x.selectedIndex].text : x.value.trim(); };
-      var body = ['Claim: ' + v('claim'), 'When: ' + v('when'), 'Name: ' + v('name'), 'Phone: ' + v('phone'), 'Email: ' + v('email')].join('\n');
+      var body = ['Claim: ' + v('claim'), 'Name: ' + v('name'), 'Phone: ' + v('phone'), 'Email: ' + v('email')].concat(hf.elements.message && v('message') ? ['', 'Anything else: ' + v('message')] : []).join('\n');
       location.href = hf.getAttribute('action') + '?subject=' + encodeURIComponent('Start my claim: ' + v('claim')) + '&body=' + encodeURIComponent(body);
       msg.hidden = false; msg.textContent = 'Your email app should open with your answers. Send it and a claim expert will be in touch.';
     }
   }); });
+
+  /* The contact form (/demos/contact-form/, 2026-11-03). Name, phone and email are needed; with no endpoint yet,
+     sending opens the visitor's email with the message written in, then thanks them by first name. */
+  var kf = d.getElementById('kf');
+  if (kf) kf.addEventListener('submit', function (e) {
+    var bad = [].slice.call(kf.querySelectorAll('.kf-req')).filter(function (f) { var x = f.querySelector('input'); var ok = x.value.trim() && (x.type !== 'email' || /.+@.+\..+/.test(x.value)); f.classList.toggle('bad', !ok); return !ok; });
+    var msg = kf.querySelector('.kf-msg');
+    if (bad.length) { e.preventDefault(); msg.hidden = false; msg.textContent = 'Please add the details marked in red so we can reply to you.'; bad[0].querySelector('input').focus(); return; }
+    msg.hidden = true;
+    var v = function (n) { var x = kf.elements[n]; if (!x) return ''; return x.options ? (x.value ? x.options[x.selectedIndex].text : '') : x.value.trim(); };
+    if (/^mailto:/.test(kf.getAttribute('action'))) {
+      e.preventDefault();
+      var lines = [['About', v('about')], ['Name', v('name')], ['Phone', v('phone')], ['Email', v('email')]].filter(function (l) { return l[1]; }).map(function (l) { return l[0] + ': ' + l[1]; });
+      if (v('message')) lines.push('', v('message'));
+      location.href = kf.getAttribute('action') + '?subject=' + encodeURIComponent('Message from ' + v('name')) + '&body=' + encodeURIComponent(lines.join('\n'));
+    }
+    var nm = kf.querySelector('[data-name]'); if (nm) nm.textContent = ', ' + v('name').split(' ')[0];
+    kf.querySelector('.kf-done').hidden = false; kf.classList.add('sent');
+  });
 
   /* The picture-set switch on the review page (2026-10-19). */
   var isw = all('.ill-sw button'), isec = d.querySelector('.cf-ill');
@@ -2009,7 +2192,7 @@ html.uni .closing-u .cx-trust i{color:transparent}
     }
     function answer(name) { var c = check.querySelector('input[name="' + name + '"]:checked'); return c ? c.nextElementSibling.textContent : ''; }
     function finish() {
-      var rows = [['Your claim', answer('claim')], ['When', answer('when')], ['Where', answer('where')]];
+      var rows = [['Your claim', answer('claim')], ['Where', answer('where')]];
       check.querySelector('.check-sum').innerHTML = rows.map(function (r) { return '<li><span>' + r[0] + '</span><b>' + r[1] + '</b></li>'; }).join('');
       var where = (check.querySelector('input[name="where"]:checked') || {}).value;
       check.querySelector('.check-far').hidden = where === 'england' || where === 'wales';
@@ -2035,7 +2218,7 @@ html.uni .closing-u .cx-trust i{color:transparent}
       msg.hidden = true;
       if (/^mailto:/.test(check.getAttribute('action'))) {
         var v = function (n) { var x = check.elements[n]; return x.value ? x.value.trim() : ''; };
-        var body = 'Claim: ' + answer('claim') + '\nWhen: ' + answer('when') + '\nWhere: ' + answer('where') + '\nName: ' + v('name') + '\nPhone: ' + v('phone') + '\nEmail: ' + v('email');
+        var body = 'Claim: ' + answer('claim') + '\nWhere: ' + answer('where') + '\nName: ' + v('name') + '\nPhone: ' + v('phone') + '\nEmail: ' + v('email');
         location.href = check.getAttribute('action') + '?subject=' + encodeURIComponent('Start your claim: ' + answer('claim')) + '&body=' + encodeURIComponent(body);
       }
       show(qs.length);
@@ -2110,13 +2293,51 @@ html.uni .closing-u .cx-trust i{color:transparent}
     lines.forEach(function (l, n) { l.classList.toggle('on', n === i); });
   }
   tabs.forEach(function (t, i) {
-    t.addEventListener('click', function () { show(i); });
+    t.addEventListener('click', function () { if (!howGo || !howGo(i)) show(i); });
     t.addEventListener('keydown', function (e) {
       var to = e.key === 'ArrowDown' || e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowUp' || e.key === 'ArrowLeft' ? i - 1 : -1;
       if (to < 0 && e.key !== 'ArrowUp' && e.key !== 'ArrowLeft') return;
       e.preventDefault(); to = (to + tabs.length) % tabs.length; show(to); tabs[to].focus();
     });
   });
+
+  /* HOW IT WORKS, STEPPED BY SCROLLING (Fahad, 2026-11-03, his pick "A"). On a desktop the section is wrapped in a
+     runway and held just under the bar while each step gets STEP of a screen of scrolling; a red line runs down the
+     timeline (--hp). Clicking a step, or a link to Solicitors, scrolls to that step. Off on a phone, a short screen, or
+     with less motion asked for: then the tabs simply click. A second scroll listener, by his pick. */
+  var howGo = null, howSec = d.querySelector('.diff-pin');
+  if (howSec && tabs.length && !still) (function () {
+    var mq = window.matchMedia('(min-width:1024px) and (min-height:640px)'), STEP = .65, HOLD = .35;
+    var run = d.createElement('div'); run.className = 'how-run';
+    howSec.parentNode.insertBefore(run, howSec); run.appendChild(howSec);
+    var list = howSec.querySelector('.diff-tabs'), pad0 = parseFloat(getComputedStyle(howSec).paddingTop), topV = 0, at = -1, on = false;
+    function lay() {
+      howSec.style.paddingTop = howSec.style.paddingBottom = howSec.style.top = ''; run.style.height = '';
+      on = mq.matches; howSec.classList.toggle('how-pin', on);
+      if (!on) { list.style.removeProperty('--hp'); return; }
+      var bar = (d.querySelector('.top') || { offsetHeight: 0 }).offsetHeight;
+      var vh = window.innerHeight, room = vh - bar, inner = howSec.offsetHeight - 2 * pad0, pad = Math.max(24, Math.min(pad0, (room - inner) / 2));
+      howSec.style.paddingTop = howSec.style.paddingBottom = pad + 'px';
+      var h = inner + 2 * pad; topV = Math.min(bar, vh - h); howSec.style.top = topV + 'px';
+      run.style.height = (h + ((tabs.length - 1) * STEP + HOLD) * vh) + 'px';
+      tick();
+    }
+    function tick() {
+      if (!on) return;
+      var gone = topV - run.getBoundingClientRect().top, per = STEP * window.innerHeight;
+      var i = Math.max(0, Math.min(tabs.length - 1, Math.floor(gone / per + .15)));
+      list.style.setProperty('--hp', Math.max(0, Math.min(1, gone / (per * (tabs.length - 1)))).toFixed(3));
+      if (i !== at) { at = i; show(i); }
+    }
+    howGo = function (i) {
+      if (!on) { show(i); return false; }
+      var y = run.getBoundingClientRect().top + window.scrollY - topV + i * STEP * window.innerHeight + 2;
+      window.scrollTo({ top: y, behavior: 'smooth' }); return true;
+    };
+    window.addEventListener('scroll', tick, { passive: true });
+    window.addEventListener('resize', lay); window.addEventListener('load', lay);
+    lay();
+  })();
 
   /* REVIEW PAGE ONLY (/demos/how-neko/): How it works as Neko's pinned panel,
      carried over from Vela's home page with its numbers. Scrolling through the
@@ -2182,6 +2403,7 @@ html.uni .closing-u .cx-trust i{color:transparent}
     if (!el) return false;
     if (el.classList.contains('cf-card')) { var t = el.parentNode; t.scrollTo({ left: el.offsetLeft - t.firstElementChild.offsetLeft }); d.getElementById('claims').scrollIntoView(); return true; }
     if (el.id === 'solicitors' && hnGo && el.closest('.hn')) { hnGo([].indexOf.call(el.closest('.hn-copy').children, el.closest('.hn-copy > div'))); return true; }
+    if (el.id === 'solicitors' && howGo && howGo(tabs.indexOf(el.closest('button')))) return true;
     if (el.id === 'solicitors') { show(tabs.indexOf(el.closest('button'))); d.getElementById('how').scrollIntoView(); return true; }
     return false;
   }
@@ -2347,7 +2569,7 @@ html.uni .closing-u .cx-trust i{color:transparent}
     if (first) { first.focus(); return; }
     var v = function (n) { var el = f.elements[n]; if (!el) return ''; if (el.length && !el.options) { var c = f.querySelector('input[name="' + n + '"]:checked'); return c ? c.closest('label').querySelector('b').textContent : ''; } return el.options ? el.options[el.selectedIndex].text : el.value.trim(); };
     if (/^mailto:/.test(f.getAttribute('action'))) {
-      var body = ['Claim: ' + v('claim'), 'When: ' + v('when'), 'Where: ' + v('where'), 'Name: ' + v('name'), 'Phone: ' + v('phone'), 'Email: ' + v('email'), 'Best time to call: ' + v('call_time')].join('\n');
+      var body = ['Claim: ' + v('claim'), 'Where: ' + v('where'), 'Name: ' + v('name'), 'Phone: ' + v('phone'), 'Email: ' + v('email')].join('\n');
       location.href = f.getAttribute('action') + '?subject=' + encodeURIComponent('Free check: ' + v('claim')) + '&body=' + encodeURIComponent(body);
     }
     q.concat([f.querySelector('.cq-top'), f.querySelector('.cq-foot')]).forEach(function (el) { el.hidden = true; });
@@ -2379,6 +2601,40 @@ html.uni .closing-u .cx-trust i{color:transparent}
     window.location.href = f.getAttribute('action') + '?subject=' + encodeURIComponent('Partner enquiry: ' + v('firm')) + '&body=' + encodeURIComponent(body);
     msg.hidden = false; msg.textContent = 'Your email app should open with your details filled in. Send it and we will be in touch.';
   });
+})();
+
+/* COOKIE CHOICES AND GOOGLE ANALYTICS (2026-11-03). The banner shows until the visitor chooses; the choice is kept in
+   this browser's local storage (strictly necessary). Analytics loads only after Accept, and only once the engineers have
+   set GA_ID in build.js. Choosing Reject later removes the Analytics cookies this site set. */
+(function () {
+  var d = document, ck = d.getElementById('cky');
+  if (!ck) return;
+  var KEY = 'claim3000-cookies', id = ck.getAttribute('data-ga');
+  var get = function () { try { return localStorage.getItem(KEY); } catch (e) { return null; } };
+  var set = function (v) { try { localStorage.setItem(KEY, v); } catch (e) {} };
+  function loadGA() {
+    if (!id || window.__c3kGA) return;
+    window.__c3kGA = true;
+    var s = d.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id); d.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date()); window.gtag('config', id);
+  }
+  function clearGA() {
+    d.cookie.split(';').forEach(function (c) {
+      var n = c.split('=')[0].trim();
+      if (/^_ga/.test(n)) [location.hostname, '.' + location.hostname.replace(/^www\./, '')].forEach(function (dom) { d.cookie = n + '=; Max-Age=0; path=/; domain=' + dom; d.cookie = n + '=; Max-Age=0; path=/'; });
+    });
+  }
+  function choose(v) {
+    set(v); ck.hidden = true;
+    if (v === 'granted') loadGA(); else clearGA();
+  }
+  ck.addEventListener('click', function (e) { var b = e.target.closest('[data-ck]'); if (b) choose(b.getAttribute('data-ck')); });
+  [].forEach.call(d.querySelectorAll('[data-ck-open]'), function (b) { b.addEventListener('click', function () { ck.hidden = false; ck.querySelector('[data-ck]').focus(); }); });
+  var now = get();
+  if (now === 'granted') loadGA();
+  else if (now !== 'denied') ck.hidden = false;
 })();
 </script>
 </body>
