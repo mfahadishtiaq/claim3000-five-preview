@@ -1582,6 +1582,11 @@ html.ed .gi-head .d2,html.ed .sp-prose .d2{max-width:22ch}
 .check-p{margin-top:14px;font-size:17px;line-height:26px;color:#374151}
 .check-go{margin-top:22px}
 .check-small{margin-top:12px;font-size:14px;line-height:20px;color:#6B7280}
+/* privacy line where details are collected (copywriter's Contact us line, 2026-11-05) */
+.hf-priv{margin-top:8px}
+.check-priv{margin-top:6px}
+.check-priv a{color:inherit}
+.sp-fine{margin-top:14px}
 .check-contact .gate{margin-top:14px}
 .check-done .check-p{max-width:560px}
 @media (max-width:767px){.check-contact .sp-two{grid-template-columns:1fr}}
@@ -1856,15 +1861,15 @@ html.uni .closing-u .cx-trust i{color:transparent}
   <header class="lg-head">
     <p class="eyebrow">Legal</p>
     <h1 class="lg-h" id="lg-h">Complaints</h1>
-    <p class="lg-lead">We want everyone we help to feel well looked after. If something has not gone the way you expected, please tell us, and we will do our best to put it right.</p>
+    <p class="lg-lead">We want you to feel well looked after. If something has not gone as you expected, please tell us. We will do our best to put it right.</p>
     <p class="lg-date">Last updated 3 November 2026</p>
     <p class="lg-draft">Draft for Claim 3000 to review. The marked points need the company's confirmation before this page goes live.</p>
   </header>
   <div class="lg-body">
-    <section class="lg-sec"><h2>How to tell us</h2><p>You can contact us however suits you:</p><ul><li>by phone on <a href="tel:03333553000">0333 355 3000</a> or <a href="tel:01612220606">0161 222 0606</a></li><li>by email at <a href="mailto:info@claim3000.co.uk">info@claim3000.co.uk</a></li><li>by post to Claim3000 Ltd, Unit 31, Cariocca Business Park, Hellidon Close, Ardwick, Manchester M12 4AH</li></ul><p><span class="lg-tbc">To be confirmed by Claim 3000: the name or role of the person who handles complaints, and any dedicated email or address for them</span></p><p>It helps to include your name and contact details, what happened, and what you would like us to do. If you have a claim reference, please add that too.</p></section>
-    <section class="lg-sec"><h2>What happens next</h2><ul><li>We will send you a written acknowledgement promptly, so you know we have your complaint and are looking into it.</li><li>We will keep you updated while we look into it.</li><li>Within eight weeks of receiving your complaint, we will send you our final response in writing. If we cannot give it by then, we will write to explain why and when we expect to, and tell you that you can take your complaint to the Financial Ombudsman Service.</li></ul></section>
+    <section class="lg-sec"><h2>How to tell us</h2><p>Please contact us in whichever way suits you:</p><ul><li>by phone on <a href="tel:03333553000">0333 355 3000</a> or <a href="tel:01612220606">0161 222 0606</a></li><li>by email at <a href="mailto:info@claim3000.co.uk">info@claim3000.co.uk</a></li><li>by post to Claim3000 Ltd, Unit 31, Cariocca Business Park, Hellidon Close, Ardwick, Manchester M12 4AH</li></ul><p><span class="lg-tbc">To be confirmed by Claim 3000: the name or role of the person who handles complaints, and any dedicated email or address for them</span></p><p>Please include your name and contact details, what happened and what you would like us to do. If you have a claim reference, include that too.</p></section>
+    <section class="lg-sec"><h2>What happens next</h2><ul><li>We will promptly acknowledge your complaint in writing, so you know we have received it and are looking into it.</li><li>We will keep you updated while we look into it.</li><li>Within eight weeks of receiving your complaint, we will send you our final response in writing. If we cannot give it by then, we will write to explain why and when we expect to, and tell you that you can take your complaint to the Financial Ombudsman Service.</li></ul></section>
     <section class="lg-sec"><h2>The Financial Ombudsman Service</h2><p>If you are not happy with our final response, or eight weeks have passed without one, you can ask the Financial Ombudsman Service to look at your complaint. It is free and independent.</p><p>You need to contact them within six months of the date of our final response. There are also overall time limits: usually six years from the event you are complaining about, or three years from when you knew, or should have known, that you had reason to complain.</p><p>You can find out more and contact them at <a href="https://www.financial-ombudsman.org.uk/" target="_blank" rel="noopener">financial-ombudsman.org.uk</a>.</p></section>
-    <section class="lg-sec"><h2>Complaints about your solicitor</h2><p>If your complaint is about the solicitor handling your claim, they have their own complaints procedure, which they will give you. We are happy to help you find it.</p></section>
+    <section class="lg-sec"><h2>Complaints about your solicitor</h2><p>The solicitor handling your claim has their own complaints procedure. They will give you a copy if your complaint is about them. We can help you find it.</p></section>
   </div>
 </article>
 </main>
@@ -1886,7 +1891,7 @@ html.uni .closing-u .cx-trust i{color:transparent}
 </footer>
 
 <div class="cky" id="cky" role="region" aria-label="Cookie choices" data-ga="" hidden>
-  <p class="cky-t">We would like to use analytics cookies to understand how people use this website, so we can improve it. They are only set if you accept. <a href="/claim3000-five-preview/cookies/">Cookie policy</a></p>
+  <p class="cky-t">We would like to use analytics cookies to understand how you use this website and help us improve it. We only set them if you accept. <a href="/claim3000-five-preview/cookies/">Cookie policy</a></p>
   <div class="cky-b"><button class="cky-btn" type="button" data-ck="denied">Reject</button><button class="cky-btn" type="button" data-ck="granted">Accept</button></div>
 </div>
 <script>/* CLAIM 3000, SITE FIVE: behaviour.
@@ -2517,7 +2522,11 @@ html.uni .closing-u .cx-trust i{color:transparent}
     window.gtag = function () { window.dataLayer.push(arguments); };
     window.gtag('js', new Date()); window.gtag('config', id);
   }
+  /* Reject after Accept: Google's script is still running on this page and would put its cookie back and keep
+     reporting (seen in WebKit, 2026-11-05). Google's own off switch stops it; the consent update covers newer tags. */
   function clearGA() {
+    if (id) window['ga-disable-' + id] = true;
+    if (window.gtag) window.gtag('consent', 'update', { analytics_storage: 'denied' });
     d.cookie.split(';').forEach(function (c) {
       var n = c.split('=')[0].trim();
       if (/^_ga/.test(n)) [location.hostname, '.' + location.hostname.replace(/^www\./, '')].forEach(function (dom) { d.cookie = n + '=; Max-Age=0; path=/; domain=' + dom; d.cookie = n + '=; Max-Age=0; path=/'; });
@@ -2531,7 +2540,8 @@ html.uni .closing-u .cx-trust i{color:transparent}
   [].forEach.call(d.querySelectorAll('[data-ck-open]'), function (b) { b.addEventListener('click', function () { ck.hidden = false; ck.querySelector('[data-ck]').focus(); }); });
   var now = get();
   if (now === 'granted') loadGA();
-  else if (now !== 'denied') ck.hidden = false;
+  else if (now === 'denied') clearGA();
+  else ck.hidden = false;
 })();
 </script>
 </body>

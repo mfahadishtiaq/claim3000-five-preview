@@ -1582,6 +1582,11 @@ html.ed .gi-head .d2,html.ed .sp-prose .d2{max-width:22ch}
 .check-p{margin-top:14px;font-size:17px;line-height:26px;color:#374151}
 .check-go{margin-top:22px}
 .check-small{margin-top:12px;font-size:14px;line-height:20px;color:#6B7280}
+/* privacy line where details are collected (copywriter's Contact us line, 2026-11-05) */
+.hf-priv{margin-top:8px}
+.check-priv{margin-top:6px}
+.check-priv a{color:inherit}
+.sp-fine{margin-top:14px}
 .check-contact .gate{margin-top:14px}
 .check-done .check-p{max-width:560px}
 @media (max-width:767px){.check-contact .sp-two{grid-template-columns:1fr}}
@@ -1899,6 +1904,7 @@ html.uni .closing-u .cx-trust i{color:transparent}
     <label class="hf-note"><span>Anything else <small class="hf-opt">(optional)</small></span><textarea name="message" rows="2"></textarea></label>
     <button class="btn btn-red hf-go" type="submit">Start my claim</button>
     <p class="hf-small">Claim 3000 will contact you within 24 hours to discuss your enquiry. Or <a href="tel:03333553000">call us</a>.</p>
+    <p class="hf-small hf-priv">Claim3000 Ltd will use your details only to reply to you and, if you go ahead, to help with your claim. <a href="/claim3000-five-preview/privacy-policy/">Privacy policy</a></p>
     <p class="hf-msg" role="status" hidden></p>
   </form>
 </section>
@@ -1921,7 +1927,7 @@ html.uni .closing-u .cx-trust i{color:transparent}
 </footer>
 
 <div class="cky" id="cky" role="region" aria-label="Cookie choices" data-ga="" hidden>
-  <p class="cky-t">We would like to use analytics cookies to understand how people use this website, so we can improve it. They are only set if you accept. <a href="/claim3000-five-preview/cookies/">Cookie policy</a></p>
+  <p class="cky-t">We would like to use analytics cookies to understand how you use this website and help us improve it. We only set them if you accept. <a href="/claim3000-five-preview/cookies/">Cookie policy</a></p>
   <div class="cky-b"><button class="cky-btn" type="button" data-ck="denied">Reject</button><button class="cky-btn" type="button" data-ck="granted">Accept</button></div>
 </div>
 <script>/* CLAIM 3000, SITE FIVE: behaviour.
@@ -2552,7 +2558,11 @@ html.uni .closing-u .cx-trust i{color:transparent}
     window.gtag = function () { window.dataLayer.push(arguments); };
     window.gtag('js', new Date()); window.gtag('config', id);
   }
+  /* Reject after Accept: Google's script is still running on this page and would put its cookie back and keep
+     reporting (seen in WebKit, 2026-11-05). Google's own off switch stops it; the consent update covers newer tags. */
   function clearGA() {
+    if (id) window['ga-disable-' + id] = true;
+    if (window.gtag) window.gtag('consent', 'update', { analytics_storage: 'denied' });
     d.cookie.split(';').forEach(function (c) {
       var n = c.split('=')[0].trim();
       if (/^_ga/.test(n)) [location.hostname, '.' + location.hostname.replace(/^www\./, '')].forEach(function (dom) { d.cookie = n + '=; Max-Age=0; path=/; domain=' + dom; d.cookie = n + '=; Max-Age=0; path=/'; });
@@ -2566,7 +2576,8 @@ html.uni .closing-u .cx-trust i{color:transparent}
   [].forEach.call(d.querySelectorAll('[data-ck-open]'), function (b) { b.addEventListener('click', function () { ck.hidden = false; ck.querySelector('[data-ck]').focus(); }); });
   var now = get();
   if (now === 'granted') loadGA();
-  else if (now !== 'denied') ck.hidden = false;
+  else if (now === 'denied') clearGA();
+  else ck.hidden = false;
 })();
 </script>
 </body>
